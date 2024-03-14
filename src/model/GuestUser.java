@@ -1,7 +1,8 @@
 package model;
 
-public class GuestUser {
+//import java.time.LocalDateTime;
 
+public class GuestUser {
 	//1. variables
 	//2. get and set
 	//3. constructors
