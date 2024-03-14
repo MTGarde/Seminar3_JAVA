@@ -1,5 +1,7 @@
 package model.user;
 
+import model.PostType;
+
 import java.security.MessageDigest;
 
 public abstract class User extends GuestUser {
@@ -7,7 +9,7 @@ public abstract class User extends GuestUser {
 	private String username;
 	//TODO uztaisit enkodesanu, piemeram ar MD5
 	private String password;
-	private String nameAndSurnameOrTitle;
+	protected String nameAndSurnameOrTitle;
 	
 	
 	//2. get and set
@@ -30,7 +32,10 @@ public abstract class User extends GuestUser {
 	public String getNameAndSurnameOrTitle() {
 		return nameAndSurnameOrTitle;
 	}
-	public abstract void setNameAndSurnameOrTitle(String nameAndSurnameOrTitle);
+
+
+
+    public abstract void setNameAndSurnameOrTitle(String nameAndSurnameOrTitle);
 	
 
 
@@ -52,7 +57,9 @@ public abstract class User extends GuestUser {
 	public String toString() {
 		return super.toString() + ":";
 	}
-	
+
+	public abstract void publishPost(PostType type, String message) throws Exception;
+
 	//5. other functions
 	
 	//TODO login()
