@@ -1,5 +1,6 @@
 package model.user;
 
+import model.Post;
 import model.PostType;
 
 import java.security.MessageDigest;
@@ -66,10 +67,10 @@ public abstract class User extends GuestUser {
 	//4. toString
 	
 	public String toString() {
-		return super.toString() + ":";
+		return super.toString() + ":" + nameAndSurnameOrTitle + "(" + username + ")";
 	}
 
-	public abstract void publishPost(PostType type, String message) throws Exception;
+	public abstract Post publishPost(PostType type, String message) throws Exception;
 
 	//5. other functions
 	

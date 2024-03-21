@@ -28,7 +28,7 @@ public class PrivateUser extends User{
     @Override
     public void setNameAndSurnameOrTitle(String nameAndSurnameOrTitle) {
 
-        if(nameAndSurnameOrTitle != null && nameAndSurnameOrTitle.matches("[A-ZĒŪĪĻĶĢŠĀČŅ]{1}[a-zēūīļķģšāžčņ]+ [A-ZĒŪĪĻĶĢŠĀČŅ]{1}[a-zēūīļķģšāžčņ]")){
+        if(nameAndSurnameOrTitle != null && nameAndSurnameOrTitle.matches("[A-ZĒŪĪĻĶĢŠĀČŅ]{1}[a-zēūīļķģšāžčņ]+ [A-ZĒŪĪĻĶĢŠĀČŅ]{1}[a-zēūīļķģšāžčņ]+")){
             super.nameAndSurnameOrTitle = nameAndSurnameOrTitle;
         }else
         {super.nameAndSurnameOrTitle = "------";}
@@ -50,13 +50,13 @@ public class PrivateUser extends User{
 
     //4tostring
     public String toString(){
-        return super.toString() + super.nameAndSurnameOrTitle + "( " + getUsername() + " )";
+        return super.toString() + "[" + (privatePosts.size() + publicPosts.size()) + " posts]";
     }
 
     //5other
 
     @Override
-    public void publishPost(PostType type, String message)throws Exception{
+    public Post publishPost(PostType type, String message)throws Exception{
         //parbaude not null
         if(type == null || message == null){
             throw new Exception ("Bad parameters");
@@ -68,6 +68,7 @@ public class PrivateUser extends User{
         if(type.equals(PostType.PRIVATE)) privatePosts.add(newPost);
         //ja type ip public ieliek zem publicPosts
         if(type.equals(PostType.PUBLIC)) publicPosts.add(newPost);
+        return newPost;
     }
 
     public void followPrivateUser(User user) throws Exception{
