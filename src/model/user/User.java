@@ -25,9 +25,20 @@ public abstract class User extends GuestUser {
 	public void setPassword(String password) {
 		//TODO ievietot enkodēšanu
 		if(password != null && password.matches("^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,40}$"))
-			this.password = password;
-		else
-			this.password = "--------";
+		{
+			try{
+				MessageDigest md = MessageDigest.getInstance("MD5");
+				md.update(password.getBytes());
+				this.password = new String(md.digest());
+			}
+			catch(Exception e) {
+				this.password = password;
+			}
+		}
+		else{
+		this.password = "--------";
+		}
+
 	}
 	public String getNameAndSurnameOrTitle() {
 		return nameAndSurnameOrTitle;
