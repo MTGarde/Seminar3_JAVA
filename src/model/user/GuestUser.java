@@ -2,11 +2,15 @@ package model.user;
 
 //import java.time.LocalDateTime;
 
+import service.impl.GuestUserServiceImpl;
+
 public class GuestUser {
 	//1. variables
 	private long userID;
 	
 	private static long counter = 0;
+
+	public GuestUserServiceImpl service = new GuestUserServiceImpl();
 	//2. get and set
 
 	public long getUserID() {

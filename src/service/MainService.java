@@ -11,7 +11,7 @@ import java.util.Arrays;
 
 public class MainService {
 
-    private static ArrayList<GuestUser> allUsers = new ArrayList<GuestUser>();
+    public static ArrayList<GuestUser> allUsers = new ArrayList<GuestUser>();
     public static void main(String[] args){
         GuestUser u1 = new GuestUser();
         GuestUser u2 = new GuestUser();
@@ -20,6 +20,7 @@ public class MainService {
         BusinessUser u5 = new BusinessUser();
         PrivateUser u6 = new PrivateUser("Marta", "Garde", "1234567890Ma");
         BusinessUser u7 = new BusinessUser("Hesburger", "1234567890He", "LV20000000000");
+        PrivateUser u8 = new PrivateUser("Hesburger", "Edajs", "1234567890HEe");
 
 
 
@@ -66,5 +67,22 @@ public class MainService {
         }
 
         System.out.println("-------------------------------------------------------");
+
+        System.out.println("Search ->");
+        try{
+            System.out.println(u1 + "->" + u1.service.findUsers("Hesb"));
+            System.out.println(u6 + "->" + u6.service.findUsers("Hesb"));
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+
+
+        System.out.println("Find pages ->");
+        try{
+            System.out.println(u5 + "->" + u5.service.findPages("Hesb"));
+            System.out.println(u7 + "->" + u7.service.findPages("Hesb"));
+        }catch(Exception e){
+            e.printStackTrace();
+        }
     }
 }
